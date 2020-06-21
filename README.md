@@ -1,6 +1,6 @@
 # demoflutter
 
-A new Flutter application.
+A simple Flutter demo application.
 
 ## Getting Started
 
