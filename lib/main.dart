@@ -6,18 +6,23 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      home: HomePage()
     );
   }
 }
 
+
+
 class HomePage extends StatefulWidget {
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 
 class _HomePageState extends State<HomePage> {
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
   @override
 
  String _var= 'Our First Flutter Application';
@@ -30,22 +35,31 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return 
      Scaffold(
+       key: _scaffoldKey,
        appBar: AppBar(title: Text('Namaste!'),
-         leading: IconButton(icon:Icon(Icons.menu), onPressed:(){
-           _onPressed(response:'menu button pressed');
+         leading: IconButton(icon:Icon(Icons.menu), onPressed:() {
+           _onPressed(response: 'menu button pressed');
+
+           _scaffoldKey.currentState.openDrawer();
          }),
+
          backgroundColor: Colors.purple[200],
            actions: <Widget>[
              IconButton(icon:Icon(Icons.search), onPressed:() {
                _onPressed(response: 'search button pressed');
              }),
-             IconButton(icon: Icon(Icons.settings), onPressed:(){
-               _onPressed(response:'settings button pressed');
-             })
+             
+             IconButton(icon: Icon(Icons.settings), onPressed:() {
+               _onPressed(response: 'settings button pressed');
+               })
            ],
        ),
-    
+        drawer: Drawer(
+          child: Center(
+            child: Text('Drawer opened'),
+          ),
 
+        ),
 
         body:SafeArea(
             child:Center(
